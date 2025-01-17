@@ -1,0 +1,71 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+}
+
+header nav button {
+    margin: 0 10px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+header nav button:hover {
+    text-decoration: underline;
+}
+
+main {
+    padding: 20px;
+}
+
+.section {
+    display: none;
+}
+
+.section.active {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
+
+form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
