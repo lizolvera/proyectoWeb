@@ -2,7 +2,7 @@
 $host = 'localhost'; 
 $usuario = 'root'; 
 $clave = ''; 
-$nombre_bd = 'dbusuarios'; 
+$nombre_bd = 'registro_usuarios'; 
 
 $conn = new mysqli($host, $usuario, $clave, $nombre_bd);
 
