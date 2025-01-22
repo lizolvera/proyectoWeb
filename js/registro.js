@@ -1,4 +1,4 @@
-    // Validación en tiempo real (teclado)
+    // para bloqueo de teclado 
     function permitirSoloLetras(event) {
         const char = String.fromCharCode(event.keyCode || event.which);
         const regex = /^[a-zA-ZÁÉÍÓÚáéíóúÑñ\s]$/; // Solo letras y espacios
@@ -23,9 +23,9 @@
         }
     }
 
-    // Validación al enviar el formulario
+    // validacion de envio del form
     document.addEventListener("DOMContentLoaded", function () {
-        // Validaciones específicas en tiempo real
+        // especificaciones
         document.getElementById("nombre").addEventListener("keypress", permitirSoloLetras);
         document.getElementById("ap").addEventListener("keypress", permitirSoloLetras);
         document.getElementById("am").addEventListener("keypress", permitirSoloLetras);
@@ -100,10 +100,10 @@
                 errorMessage += "Debe aceptar los términos y condiciones.\n";
             }
 
-            // Mostrar mensajes de error si alguna validación falla
+            // si el js no funciona
             if (!isValid) {
-                event.preventDefault(); // Evitar el envío del formulario
-                alert(errorMessage); // Mostrar los errores al usuario
+                event.preventDefault(); // evita que el formulario se envie
+                alert(errorMessage); // Muestra errores al usuario cfcff
             }
         });
     });
