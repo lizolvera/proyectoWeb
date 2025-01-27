@@ -3,20 +3,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro</title>
-    <link rel="stylesheet" href="/css/styleIndex.css">
+    <link rel="stylesheet" href="../css/styleIndex.css">
 </head>
 <body>
     <video class="video-background" autoplay loop muted playsinline>
-        <source src="/video/milky-way-timelapse.3840x2160.mp4" type="video/mp4">
+        <source src="../video/milky-way-timelapse.3840x2160.mp4" type="video/mp4">
         Tu navegador no soporta videos HTML5.
     </video>
     <header>
-        <div><img src="/images/logoArte.png" alt="Logo"></div>
+        <div><img src="../images/logoArte.png" alt="Logo"></div>
         <nav>
-            <a href="/index.html">Inicio</a>
-            <a href="/html/login.html">Login</a>
+            <a href="../index.html">Inicio</a>
+            <a href="login.html">Login</a>
             <a href="#contactanos">Contáctanos</a>
-            <a href="/html/galeria.html">Galería</a>
+            <a href="galeria.html">Galería</a>
             <a href="#blog">Blog</a>
         </nav>
     </header>
@@ -24,55 +24,93 @@
     <main>
         <section id="registro">
             <h2>Registro de Usuario</h2>
-            <form action="/controller/registrar.php" method="post" style="max-width: 400px; margin: auto;">
-                <label for="nombre">Nombre/s:</label>
-                <input type="text" id="nombre" name="nombre" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-            
-                <label for="nombre">Apellido Paterno:</label>
-                <input type="text" id="ap" name="ap" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+            <form action="../controller/registrar.php" method="post" style="max-width: 400px; margin: auto;">
+                <!---->
+                <div class="form-step active">
+                    <label for="nombre">Nombre/s:</label>
+                    <input type="text" id="nombre" name="nombre" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                    <br>
+                    <label for="ap">Apellido Paterno:</label>
+                    <input type="text" id="ap" name="ap" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                    <br>
+                    <label for="am">Apellido Materno:</label>
+                    <input type="text" id="am" name="am" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                    <br>
+                    <button type="button" class="btn-next" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Siguiente</button>
+                </div>
+                <!---->
+                <div class="form-step">
+                    <label for="username">Nombre de Usuario/Alias:</label>
+                    <input type="text" id="username" name="username" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                    
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                    
+                    <label for="password">Contraseña:</label>
+                    <div style="position: relative; margin-bottom: 15px;">
+                        <input type="password" id="password" name="password" required maxlength="8" 
+                            style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                        <button type="button" onclick="togglePassword('password', this)" 
+                            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">
+                            👁️
+                        </button>
+                    </div>
 
-                <label for="nombre">Apellido Materno:</label>
-                <input type="text" id="am" name="am" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                    <label for="confirm-password">Confirmar Contraseña:</label>
+                    <div style="position: relative; margin-bottom: 15px;">
+                        <input type="password" id="confirm-password" name="confirm-password" required maxlength="8" 
+                            style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                        <button type="button" onclick="togglePassword('confirm-password', this)" 
+                            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">
+                            👁️
+                        </button>
+                    </div>
+            
+                    <button type="button" class="btn-prev" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Atrás</button>
+                    <button type="button" class="btn-next" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Siguiente</button>
+                </div>
+                <!---->
+                <div class="form-step">
+                    <label for="telefono">Número de Teléfono:</label>
+                    <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" maxlength="10" style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
 
-                <label for="username">Nombre de Usuario/Alias:</label>
-                <input type="text" id="username" name="username" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-            
-                <label for="password">Contraseña:</label>
-                <input type="password" id="password" name="password" required maxlength="8" style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-            
-                <label for="confirm-password">Confirmar Contraseña:</label>
-                <input type="password" id="confirm-password" name="confirm-password" required maxlength="8" style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-            
-                <label for="telefono">Número de Teléfono:</label>
-                <input type="tel" id="telefono" name="telefono" pattern="[0-9]{10}" maxlength="10" style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-            
-                <label for="pregunta-secreta">Pregunta Secreta:</label>
-                <select id="pregunta-secreta" name="pregunta-secreta" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-                    <option value="" disabled selected>Seleccione una pregunta</option>
-                    <option value="personaje-favorito">¿Cuál es tu personaje favorito?</option>
-                    <option value="pelicula-favorita">¿Cuál es tu película favorita?</option>
-                    <option value="mejor-amigo">¿Quién es tu mejor amigo?</option>
-                    <option value="nombre-mascota">¿Cuál es el nombre de tu mascota?</option>
-                    <option value="deporte-favorito">¿Cuál es tu deporte favorito?</option>
-                </select>
-
-                <label for="respuesta-secreta">Respuesta Secreta:</label>
-                <input type="text" id="respuesta-secreta" name="respuesta-secreta" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-
-                <label style="display: flex; align-items: center; margin-bottom: 15px;">
-                    <input type="checkbox" id="terminos" name="terminos" required style="margin-right: 10px;">
-                    Acepto los <a href="terminos.html" target="_blank" style="color: #ffd700;">Términos y Condiciones</a>.
-                </label>
-            
-                <button type="submit" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Registrarse</button>
+                    <label for="pregunta-secreta">Pregunta Secreta:</label>
+                    <select id="pregunta-secreta" name="pregunta-secreta" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                        <option value="" disabled selected>Seleccione una pregunta</option>
+                        <option value="personaje-favorito">¿Cuál es tu personaje favorito?</option>
+                        <option value="pelicula-favorita">¿Cuál es tu película favorita?</option>
+                        <option value="mejor-amigo">¿Quién es tu mejor amigo?</option>
+                        <option value="nombre-mascota">¿Cuál es el nombre de tu mascota?</option>
+                        <option value="deporte-favorito">¿Cuál es tu deporte favorito?</option>
+                    </select>
+                    
+                    <label for="respuesta-secreta">Respuesta Secreta:</label>
+                    <input type="text" id="respuesta-secreta" name="respuesta-secreta" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                    
+                    <label style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <input type="checkbox" id="terminos" name="terminos" required style="margin-right: 10px;">
+                        Acepto los <a href="terminos.html" target="_blank" style="color: #ffd700;">Términos y Condiciones</a>.
+                    </label>
+                        <button type="button" class="btn-prev" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Atrás</button>
+                    <button type="submit" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Registrarse</button>
+                </div>
             </form>
-            
         </section>
     </main>
-    <script src="/js/registro.js"></script>
+    <script>
+        function togglePassword(inputId, button) {
+        const input = document.getElementById(inputId);
+        if (input.type === "password") {
+            input.type = "text";
+            button.textContent = "🙈"; 
+        } else {
+            input.type = "password";
+            button.textContent = "👁️"; 
+        }
+    }
+    </script>
+    <script src="../js/registro.js"></script>
+    <script src="../js/seccion.js"></script>
     <footer>
         <p>&copy; 2025 Arte y Diseño. Todos los derechos reservados.</p>
         <p>Síguenos en: <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a></p>

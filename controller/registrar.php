@@ -49,7 +49,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     );
 
     if ($stmt->execute()) {
-        echo "Nuevo usuario registrado exitosamente.";
+        echo "<script>
+            alert('Usuario registrado exitosamente.');
+            window.location.href = '/proyectoWeb/';
+            </script>";
+        header("Location: /proyectoWeb/");
+        exit();
     } else {
         echo "Error al registrar el usuario: " . $stmt->error;
     }

@@ -4,40 +4,69 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Contraseña</title>
-    <link rel="stylesheet" href="/css/styleIndex.css">
+    <link rel="stylesheet" href="../css/styleIndex.css">
 </head>
 <body>
     <video class="video-background" autoplay loop muted playsinline>
-        <source src="/video/milky-way-timelapse.3840x2160.mp4" type="video/mp4">
+        <source src="../video/milky-way-timelapse.3840x2160.mp4" type="video/mp4">
         Tu navegador no soporta videos HTML5.
     </video>
     <header>
-        <div><img src="/images/logoArte.png" alt="Logo"></div>
+        <div><img src="../images/logoArte.png" alt="Logo"></div>
         <nav>
-            <a href="/html/login.html">Login</a>
-            <a href="/html/registro.html">Registro</a>
+            <a href="login.html">Login</a>
+            <a href="registro.html">Registro</a>
             <a href="#contactanos">Contáctanos</a>
-            <a href="/html/galeria.html">Galería</a>
+            <a href="galeria.html">Galería</a>
             <a href="#blog">Blog</a>    
         </nav>
     </header>
 
     <main>
-        <section id="login">
-            <h2>Recuperacion  de contraseña</h2>
-            <form action="/controller/recuperar.php" method="post" style="max-width: 400px; margin: auto;">
+        <section id="registro">
+            <h2>Recuperación  de contraseña</h2>
+            <form action="../controller/recuperar.php" method="post" style="max-width: 400px; margin: auto;">
+
+              <div class="form-step active">
                 <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-            
+                <input type="email" id="email" name="email" required style="width: 96%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                <button type="button" class="btn-next" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Verificar Correo</button>
+              </div>
+              
+              <div class="form-step">
                 <label for="pSecreta">Pregunta Secreta:</label>
-                <input type="text" id="pSecreta" name="pSecreta" readonly style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                <input type="text" id="pSecreta" name="pSecreta" readonly style="width: 96%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
             
                 <label for="rSecreta">Respuesta Secreta:</label>
-                <input type="text" id="rSecreta" name="rSecreta" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-            
-                <button type="submit" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Recuperar Contraseña</button>
-            </form>
-            
+                <input type="text" id="rSecreta" name="rSecreta" required style="width: 96%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                
+                <button type="button" class="btn-next" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Verificar Respuesta</button>
+              </div>
+
+              <div class="form-step">
+                <label for="password">Contraseña:</label>
+                    <div style="position: relative; margin-bottom: 15px;">
+                        <input type="password" id="password" name="password" required maxlength="8" 
+                            style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                        <button type="button" onclick="togglePassword('password', this)" 
+                            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">
+                            👁️
+                        </button>
+                    </div>
+
+                    <label for="confirm-password">Confirmar Contraseña:</label>
+                    <div style="position: relative; margin-bottom: 15px;">
+                        <input type="password" id="confirm-password" name="confirm-password" required maxlength="8" 
+                            style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                        <button type="button" onclick="togglePassword('confirm-password', this)" 
+                            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">
+                            👁️
+                        </button>
+                        <button type="submit" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Cambiar Contraseña</button>
+                    </div>
+           
+              </div>
+               </form>
         </section>
     </main>
 
