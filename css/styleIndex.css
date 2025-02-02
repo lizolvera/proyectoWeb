@@ -5,6 +5,7 @@ body {
     background: linear-gradient(to bottom, #f5f5f5, #eaeaea);
     color: #333;
 }
+
 header {
     display: flex;
     justify-content: space-between;
@@ -14,9 +15,11 @@ header {
     padding: 15px 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 header img {
     max-height: 80px;
 }
+
 nav a {
     color: #fff;
     text-decoration: none;
@@ -24,12 +27,15 @@ nav a {
     font-weight: bold;
     transition: color 0.3s;
 }
+
 nav a:hover {
     color: #ffd700;
 }
+
 main {
     padding: 40px 20px;
 }
+
 main h2 {
     text-align: center;
     color: white;
@@ -37,43 +43,22 @@ main h2 {
     margin-bottom: 20px;
 }
 
-main p{
-    color: white;
-}
-
-.ache{
-    color: white;
-}
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 15px;
 }
+
 .gallery img {
     width: 100%;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s, box-shadow 0.3s;
 }
+
 .gallery img:hover {
     transform: scale(1.05);
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-}
-
-.artist-profile {
-    
-    background: #ff71fa50;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin: 20px 0;
-    transition: box-shadow 0.3s;
-}
-.artist-profile:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-}
-.artist-profile h3 {
-    color: white;
 }
 
 footer {
@@ -84,50 +69,20 @@ footer {
     margin-top: 40px;
     font-size: 0.9rem;
 }
+
 footer a {
     color: #ffd700;
     text-decoration: none;
     margin: 0 10px;
     transition: color 0.3s;
 }
+
 footer a:hover {
     color: #fff;
 }
-section h3 {
-    border-left: 5px solid #ffd700;
-    padding-left: 10px;
-    color: #333;
-    margin-bottom: 20px;
-    font-size: 1.5rem;
-}
-article {
-    background: #ff71fa50;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px;
-}
-article h4 {
-    margin: 0 0 10px;
-    color: white;
-}
-article p {
-    color: white;
-    font-size: 0.95rem;
-}
 
-.video-background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    object-fit: cover; /* Asegura que el video cubra todo el fondo */
-}
-
+/* Formulario de registro */
 #registro {
-    
     background: #ff71fa50;
     color: white;
     padding: 20px;
@@ -144,33 +99,17 @@ article p {
     text-align: center;
 }
 
-#login {
-    
-    background: #ff71fa50;
-    color: white;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
-    margin: 10px auto;
-    transition: box-shadow 0.3s;
-}
-
-#login h2 {
-    color: white;
-    text-align: center;
-}
-
-/*formulario registro*/
-
 .form-step {
     display: none;
 }
 
 .form-step.active {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     animation: fadeIn 0.3s ease-in-out;
 }
+
 
 /* Animación de transición suave */
 @keyframes fadeIn {
@@ -194,15 +133,6 @@ article p {
     float: left;
 }
 
-#registro::after {
-    content: "";
-    display: table;
-    clear: both;
-}
-
-#registro {
-    transition: height 0.3s ease-in-out;
-}
 .btn-prev,
 .btn-next {
     margin: 0px;
@@ -210,14 +140,6 @@ article p {
     text-align: center;
     transition: background 0.3s;
     background: linear-gradient(to right, #350294, #4563d9);
-}
-
-.form-step {
-    display: flex;
-    justify-content: space-between; 
-    flex-wrap: wrap; 
-    gap: 4%;
-    margin-top: 15px;
 }
 
 /* Hover en los botones */
