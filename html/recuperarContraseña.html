@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Contraseña</title>
     <link rel="stylesheet" href="../css/styleIndex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
 </head>
 <body>
     <video class="video-background" autoplay loop muted playsinline>
@@ -24,52 +25,90 @@
 
     <main>
         <section id="registro">
-            <h2>Recuperación  de contraseña</h2>
+            <h2>Recuperación de contraseña</h2>
             <form action="../controller/recuperar.php" method="post" style="max-width: 400px; margin: auto;">
-
-              <div class="form-step active">
-                <label for="email">Correo Electrónico:</label>
-                <input type="email" id="email" name="email" required style="width: 96%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-                <button type="button" class="btn-next" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Verificar Correo</button>
-              </div>
-              
-              <div class="form-step">
-                <label for="pSecreta">Pregunta Secreta:</label>
-                <input type="text" id="pSecreta" name="pSecreta" readonly style="width: 96%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-            
-                <label for="rSecreta">Respuesta Secreta:</label>
-                <input type="text" id="rSecreta" name="rSecreta" required style="width: 96%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                <!-- Primera Parte -->
+                <div class="form-step active">
+                    <div>
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" id="email" name="email" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                    </div>
+                    <button type="button" class="btn-next" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Verificar Correo</button>
+                </div>
                 
-                <button type="button" class="btn-next" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Verificar Respuesta</button>
-              </div>
-
-              <div class="form-step">
-                <label for="password">Contraseña:</label>
-                    <div style="position: relative; margin-bottom: 15px;">
-                        <input type="password" id="password" name="password" required maxlength="8" 
-                            style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                        <button type="button" onclick="togglePassword('password', this)" 
-                            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">
-                            👁️
-                        </button>
+                <!-- Segunda Parte -->
+                <div class="form-step">
+                    <div>
+                        <label for="pSecreta">Pregunta Secreta:</label>
+                        <input type="text" id="pSecreta" name="pSecreta" readonly style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
                     </div>
-
-                    <label for="confirm-password">Confirmar Contraseña:</label>
-                    <div style="position: relative; margin-bottom: 15px;">
-                        <input type="password" id="confirm-password" name="confirm-password" required maxlength="8" 
-                            style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-                        <button type="button" onclick="togglePassword('confirm-password', this)" 
-                            style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">
-                            👁️
-                        </button>
-                        <button type="submit" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Cambiar Contraseña</button>
+                    <div>
+                        <label for="rSecreta">Respuesta Secreta:</label>
+                        <input type="text" id="rSecreta" name="rSecreta" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
                     </div>
-           
-              </div>
-               </form>
+                    <button type="button" class="btn-prev" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 48%;">Atrás</button>
+                    <button type="button" class="btn-next" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 48%;">Verificar Respuesta</button>
+                </div>
+
+                <!-- Tercera Parte -->
+                <div class="form-step">
+                    <div>
+                        <label for="password">Contraseña:</label>
+                        <div style="position: relative; margin-bottom: 15px;">
+                            <input type="password" id="password" name="password" required maxlength="8" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                            <button type="button" onclick="togglePassword('password', this)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">👁️</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="confirm-password">Confirmar Contraseña:</label>
+                        <div style="position: relative; margin-bottom: 15px;">
+                            <input type="password" id="confirm-password" name="confirm-password" required maxlength="8" style="width: 100%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                            <button type="button" onclick="togglePassword('confirm-password', this)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">👁️</button>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-prev" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 48%;">Atrás</button>
+                    <button type="submit" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 48%;">Cambiar Contraseña</button>
+                </div>
+            </form>
         </section>
     </main>
 
+    <script>
+        function togglePassword(inputId, button) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+                button.textContent = "🙈";
+            } else {
+                input.type = "password";
+                button.textContent = "👁️";
+            }
+        }
+
+        // JavaScript para cambiar de secciones
+        document.addEventListener("DOMContentLoaded", function() {
+            const nextButtons = document.querySelectorAll(".btn-next");
+            const prevButtons = document.querySelectorAll(".btn-prev");
+            const formSteps = document.querySelectorAll(".form-step");
+            let currentStep = 0;
+
+            nextButtons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    formSteps[currentStep].classList.remove("active");
+                    currentStep++;
+                    formSteps[currentStep].classList.add("active");
+                });
+            });
+
+            prevButtons.forEach((button, index) => {
+                button.addEventListener("click", () => {
+                    formSteps[currentStep].classList.remove("active");
+                    currentStep--;
+                    formSteps[currentStep].classList.add("active");
+                });
+            });
+        });
+    </script>
     <footer>
         <p>&copy; 2025 Arte y Diseño. Todos los derechos reservados.</p>
         <p>Síguenos en: <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a></p>

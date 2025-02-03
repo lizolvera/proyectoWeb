@@ -81,7 +81,6 @@ footer a:hover {
     color: #fff;
 }
 
-/* Formulario de registro */
 #registro {
     background: #ff71fa50;
     color: white;
@@ -92,6 +91,7 @@ footer a:hover {
     margin: 10px auto;
     transition: box-shadow 0.3s, height 0.3s ease-in-out;
     overflow: hidden;
+    
 }
 
 #registro h2 {
@@ -109,7 +109,6 @@ footer a:hover {
     gap: 10px;
     animation: fadeIn 0.3s ease-in-out;
 }
-
 
 /* Animación de transición suave */
 @keyframes fadeIn {
