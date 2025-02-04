@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="../css/styleIndex.css">
+    <link rel="stylesheet" href="../css/sweetalert2.min.css">
+    <script src="../js/sweetalert2.min.js"></script>
+</head>
+<body>
+    <video class="video-background" autoplay loop muted playsinline>
+        <source src="../video/milky-way-timelapse.3840x2160.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+    </video>
+    <header>
+        <div><img src="../images/logoArte.png" alt="Logo"></div>
+        <nav>
+            <a href="login.html">Login</a>
+            <a href="registro.html">Registro</a>
+            <a href="#contactanos">Contáctanos</a>
+            <a href="galeria.html">Galería</a>
+            <a href="#blog">Blog</a>    
+        </nav>
+    </header>
+
+    <main>
+        <section id="recup">
+            <h2>Recuperación de contraseña</h2>
+            <form action="../controller/verificar_respuesta.php" method="post" style="max-width: 400px; margin: auto;">
+                
+                <!-- Segunda Parte -->
+                <div class="">
+                    <div>
+                        <label for="pSecreta">Pregunta Secreta:</label>
+                        <input type="text" id="pSecreta" name="pSecreta" readonly style="width: 94.5%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                    </div>
+                    <div>
+                        <label for="rSecreta">Respuesta Secreta:</label>
+                        <input type="text" id="rSecreta" name="rSecreta" required style="width: 94.5%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
+                    </div>
+                    <button type="submit" class="btn-next" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Verificar Respuesta</button>
+                </div>
+
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Arte y Diseño. Todos los derechos reservados.</p>
+        <p>Síguenos en: <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a></p>
+    </footer>
+
+    <script>
+        // Obtener parámetros de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const preguntaSecreta = urlParams.get('pSecreta');
+        const errorMessage = urlParams.get('error');
+    
+        // Si existe la pregunta secreta, asignarla al campo de texto
+        if (preguntaSecreta) {
+            document.getElementById('pSecreta').value = decodeURIComponent(preguntaSecreta);
+        }
+    
+        if (errorMessage) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errorMessage,
+                    confirmButtonColor: '#d33'
+                });
+            }
+    </script>
+</body>
+</html>

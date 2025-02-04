@@ -1,31 +1,36 @@
 <?php
-session_start();
+require_once 'conexion.php';
 
-// Verificar que existe un email guardado en la sesión
-if (!isset($_SESSION['email_recuperacion'])) {
-    header("Location: /controller/recuperar.php");
-    exit();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    session_start();
+    if (!isset($_SESSION['email_recuperacion'])) {
+        echo json_encode(["success" => false, "message" => "Sesión expirada."]);
+        exit();
+    }
+
+    $email = $_SESSION['email_recuperacion'];
+    $password = $_POST['password'];
+    $confirm_password = $_POST['confirm-password'];
+
+    if ($password !== $confirm_password) {
+        echo json_encode(["success" => false, "message" => "Las contraseñas no coinciden."]);
+        exit();
+    }
+
+    // Encriptar la contraseña antes de almacenarla
+    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+
+    $stmt = $conn->prepare("UPDATE usuarios SET PASSWORD = ? WHERE email = ?");
+    $stmt->bind_param("ss", $password_hash, $email);
+
+    if ($stmt->execute()) {
+        echo json_encode(["success" => true, "message" => "Contraseña actualizada correctamente."]);
+        session_destroy(); // Eliminar la sesión después de cambiar la contraseña
+    } else {
+        echo json_encode(["success" => false, "message" => "Error al actualizar la contraseña."]);
+    }
+
+    $stmt->close();
+    $conn->close();
 }
-
-$email = $_SESSION['email_recuperacion'];
 ?>
-
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cambiar Contraseña</title>
-</head>
-<body>
-    <form action="/controller/actualizar_contrasena.php" method="post" style="max-width: 400px; margin: auto;">
-        <label for="nueva_password">Nueva Contraseña:</label>
-        <input type="password" id="nueva_password" name="nueva_password" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-
-        <label for="confirm_password">Confirmar Contraseña:</label>
-        <input type="password" id="confirm_password" name="confirm_password" required style="width: 100%; padding: 10px; margin-bottom: 15px; border-radius: 5px; border: 1px solid #ccc;">
-
-        <button type="submit" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Cambiar Contraseña</button>
-    </form>
-</body>
-</html>

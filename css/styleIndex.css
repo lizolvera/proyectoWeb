@@ -36,6 +36,63 @@ main {
     padding: 40px 20px;
 }
 
+main p{
+    color: white;
+}
+
+.ache{
+    color: white;
+}
+
+.artist-profile {
+            
+    background: #ff71fa50;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px 0;
+    transition: box-shadow 0.3s;
+}
+.artist-profile:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+.artist-profile h4 {
+    color: white;
+}
+
+
+section h3 {
+    border-left: 5px solid #ffd700;
+    padding-left: 10px;
+    color: white;
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+article {
+    background: #ff71fa50;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+article h4 {
+    margin: 0 0 10px;
+    color: white;
+}
+article p {
+    color: white;
+    font-size: 0.95rem;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover; }/* Asegura que el video cubra todo el fondo */
+
 main h2 {
     text-align: center;
     color: white;
@@ -98,6 +155,43 @@ footer a:hover {
     color: white;
     text-align: center;
 }
+
+#login {
+    background: #ff71fa50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 10px auto;
+    transition: box-shadow 0.3s, height 0.3s ease-in-out;
+    overflow: hidden;
+    
+}
+
+#login h2 {
+    color: white;
+    text-align: center;
+}
+
+#recup {
+    background: #ff71fa50;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    margin: 10px auto;
+    transition: box-shadow 0.3s, height 0.3s ease-in-out;
+    overflow: hidden;
+    
+}
+
+#recup h2 {
+    color: white;
+    text-align: center;
+}
+
 
 .form-step {
     display: none;

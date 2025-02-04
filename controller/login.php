@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = trim($_POST['password']);
 
     if (empty($email) || empty($password)) {
-        echo "<script>alert('Por favor, complete todos los campos.');</script>";
+        header("Location: ../html/login.html?error=Por favor, complete todos los campos.");
         exit;
     }
 
@@ -26,14 +26,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION['username'] = $user['username'];
             $_SESSION['id'] = $user['id'];
 
-            echo "<script>alert('Inicio de sesión exitoso.');</script>";
-            header("Location: /proyectoWeb/html/indexLog.php");
+            /*echo "<script>alert('Inicio de sesión exitoso.');</script>";*/
+            header("Location: ../html/indexLog.php");
             exit();
         } else {
-            echo "<script>alert('Contraseña incorrecta.');</script>";
+            /*echo "<script>alert('Contraseña incorrecta.');</script>";
+            header("Location: ../html/login.html");*/
+            header("Location: ../html/login.html?error=Contraseña incorrecta.");
+            exit;
         }
     } else {
-        echo "<script>alert('No se encontró una cuenta con este correo electrónico.');</script>";
+        /*echo "<script>alert('No se encontró una cuenta con este correo electrónico.');</script>";*/
+        header("Location: ../html/login.html?error=No se encontró una cuenta con este correo electrónico.");
+        exit;
     }
 
     $stmt->close();

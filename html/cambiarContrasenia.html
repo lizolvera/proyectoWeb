@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuperar Contraseña</title>
+    <link rel="stylesheet" href="../css/styleIndex.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+</head>
+<body>
+    <video class="video-background" autoplay loop muted playsinline>
+        <source src="../video/milky-way-timelapse.3840x2160.mp4" type="video/mp4">
+        Tu navegador no soporta videos HTML5.
+    </video>
+    <header>
+        <div><img src="../images/logoArte.png" alt="Logo"></div>
+        <nav>
+            <a href="login.html">Login</a>
+            <a href="registro.html">Registro</a>
+            <a href="#contactanos">Contáctanos</a>
+            <a href="galeria.html">Galería</a>
+            <a href="#blog">Blog</a>    
+        </nav>
+    </header>
+
+    <main>
+        <section id="recup">
+            <h2>Recuperación de contraseña</h2>
+            <form action="../controller/cambiar_contrasena.php" method="post" style="max-width: 400px; margin: auto;">
+
+                <!-- Tercera Parte -->
+                <div class="">
+                    <div>
+                        <label for="password">Contraseña:</label>
+                        <div style="position: relative; margin-bottom: 15px;">
+                            <input type="password" id="password" name="password" required maxlength="8" style="width: 94.5%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                            <button type="button" onclick="togglePassword('password', this)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">👁️</button>
+                        </div>
+                    </div>
+                    <div>
+                        <label for="confirm-password">Confirmar Contraseña:</label>
+                        <div style="position: relative; margin-bottom: 15px;">
+                            <input type="password" id="confirm-password" name="confirm-password" required maxlength="8" style="width: 94.5%; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
+                            <button type="button" onclick="togglePassword('confirm-password', this)" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: none; background: none; cursor: pointer;">👁️</button>
+                        </div>
+                    </div>
+                    <button type="submit" style="background: linear-gradient(to right, #350294, #4563d9); color: #fff; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; width: 100%;">Cambiar Contraseña</button>
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <script>
+        function togglePassword(inputId, button) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+                button.textContent = "🙈";
+            } else {
+                input.type = "password";
+                button.textContent = "👁️";
+            }
+        }
+    </script>
+    <footer>
+        <p>&copy; 2025 Arte y Diseño. Todos los derechos reservados.</p>
+        <p>Síguenos en: <a href="#">Instagram</a> | <a href="#">Facebook</a> | <a href="#">Twitter</a></p>
+    </footer>
+</body>
+</html>

@@ -4,8 +4,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link rel="stylesheet" href="../css/styleIndex.css">
+    <link rel="stylesheet" href="../css/sweetalert2.min.css">
+    <script src="../js/sweetalert2.min.js"></script>
 </head>
 <body>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Leer el parámetro de error desde la URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const errorMessage = urlParams.get('error');
+            const successMessage = urlParams.get('success');
+            if (errorMessage) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: errorMessage,
+                    confirmButtonColor: '#d33'
+                });
+            }
+        });
+        </script>
     <video class="video-background" autoplay loop muted playsinline>
         <source src="../video/milky-way-timelapse.3840x2160.mp4" type="video/mp4">
         Tu navegador no soporta videos HTML5.
@@ -39,7 +57,7 @@
                     </div>
 
                     <label style="display: flex; align-items: center; margin-bottom: 15px;">
-                        ¿Olvidaste la contraseña?<a href="recuperarContraseña.html" style="color: #ffd700;"> Recuperar la contraseña</a>.
+                        ¿Olvidaste la contraseña?<a href="verificarCorreo.html" style="color: #ffd700;"> Recuperar la contraseña</a>.
                     </label>
                     
             
@@ -63,6 +81,6 @@
             input.type = "password";
             button.textContent = "👁️"; 
         }}
-    </script>
+    </script>                
 </body>
 </html>
