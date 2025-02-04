@@ -3,13 +3,12 @@ session_start();
 require 'conexion.php'; // Asegúrate de que este archivo conecta correctamente a tu base de datos.
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    if (!isset($_SESSION['email_recuperacion']) || !isset($_SESSION['pSecreta'])) {
+    if (!isset($_SESSION['email_recuperacion'])) {
         header("Location: ../html/verificarCorreo.html?error=Sesión expirada, inicia de nuevo");
         exit();
     }
 
     $email = $_SESSION['email_recuperacion'];
-    $pregunta_secreta = urlencode($_SESSION['pSecreta']); // Guardamos la pregunta secreta en sesión y la codificamos para la URL
     $respuesta_usuario = trim($_POST['rSecreta']);
 
     // Buscar la respuesta en la base de datos
@@ -28,11 +27,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             header("Location: ../html/cambiarContrasenia.html"); // Página para restablecer la contraseña
             exit();
         } else {
-            header("Location: ../html/verificarRespuesta.html?pSecreta=$pregunta_secreta&error=Respuesta incorrecta");
+            header("Location: ../html/verificarRespuesta.html?error=Respuesta incorrecta");
             exit();
         }
     } else {
-        header("Location: ../html/verificarRespuesta.html?pSecreta=$pregunta_secreta&error=Error al verificar");
+        header("Location: ../html/verificarRespuesta.html?error=Error al verificar");
         exit();
     }
 

@@ -1,36 +1,44 @@
 <?php
-require_once 'conexion.php';
+session_start();
+require 'conexion.php'; // Conexión a la base de datos
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    session_start();
-    if (!isset($_SESSION['email_recuperacion'])) {
-        echo json_encode(["success" => false, "message" => "Sesión expirada."]);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    if (!isset($_SESSION['email_recuperacion']) || !isset($_SESSION['verificacion_exitosa'])) {
+        header("Location: ../html/verificarCorreo.html?error=Sesión expirada, inicia de nuevo");
         exit();
     }
 
     $email = $_SESSION['email_recuperacion'];
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm-password'];
+    $nueva_contrasena = trim($_POST['password']);
+    $confirmar_contrasena = trim($_POST['confirm-password']);
 
-    if ($password !== $confirm_password) {
-        echo json_encode(["success" => false, "message" => "Las contraseñas no coinciden."]);
+    // Verificar que ambas contraseñas coinciden
+    if ($nueva_contrasena !== $confirmar_contrasena) {
+        header("Location: ../html/cambiarContrasenia.html?error=Las contraseñas no coinciden");
         exit();
     }
 
-    // Encriptar la contraseña antes de almacenarla
-    $password_hash = password_hash($password, PASSWORD_BCRYPT);
+    // Encriptar la nueva contraseña
+    $contrasena_encriptada = password_hash($nueva_contrasena, PASSWORD_DEFAULT);
 
+    // Actualizar la contraseña en la base de datos
     $stmt = $conn->prepare("UPDATE usuarios SET PASSWORD = ? WHERE email = ?");
-    $stmt->bind_param("ss", $password_hash, $email);
+    $stmt->bind_param("ss", $contrasena_encriptada, $email);
 
     if ($stmt->execute()) {
-        echo json_encode(["success" => true, "message" => "Contraseña actualizada correctamente."]);
-        session_destroy(); // Eliminar la sesión después de cambiar la contraseña
+        // Eliminar variables de sesión y redirigir al login
+        session_unset();
+        session_destroy();
+        header("Location: ../html/login.html?success=Contraseña actualizada con éxito, inicia sesión");
+        exit();
     } else {
-        echo json_encode(["success" => false, "message" => "Error al actualizar la contraseña."]);
+        header("Location: ../html/cambiarContrasenia.html?error=Error al actualizar la contraseña");
+        exit();
     }
 
     $stmt->close();
     $conn->close();
+} else {
+    header("Location: ../html/cambiarContrasenia.html");
+    exit();
 }
-?>
